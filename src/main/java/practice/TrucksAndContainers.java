@@ -12,7 +12,7 @@ public class TrucksAndContainers {
         this.boxes = boxes;
     }
 
-    public int CalculationContainers(int boxes) {
+    public int calculationContainers(int boxes) {
         int containers = 0;
         if (boxes > 0 && boxes > MAX_BOXES_IN_CONTAINERS) {
             containers = boxes / MAX_BOXES_IN_CONTAINERS;
@@ -24,12 +24,12 @@ public class TrucksAndContainers {
         }
     }
 
-    public int CalculationOfTheNumberOfCars(int boxes) {
-        int one_car = MAX_BOXES_IN_CONTAINERS * MAX_CONTAINERS_IN_CAR;
-        if (boxes > one_car) {
-            int calculationOfMachines = boxes / one_car;
-            return (boxes % one_car) > 0 ? calculationOfMachines + 1 : calculationOfMachines;
-        } else if (boxes <= one_car) {
+    public int calculationOfTheNumberOfCars(int boxes) {
+        int oneCar = MAX_BOXES_IN_CONTAINERS * MAX_CONTAINERS_IN_CAR;
+        if (boxes > oneCar) {
+            int calculationOfMachines = boxes / oneCar;
+            return (boxes % oneCar) > 0 ? calculationOfMachines + 1 : calculationOfMachines;
+        } else if (boxes <= oneCar) {
             return 1;
         } else {
             return 0;
@@ -39,7 +39,7 @@ public class TrucksAndContainers {
     public void loadingIntoTheCar() {
         int boxx = 1;
         int count = 1;
-        aCalculationOfTheNumberOfCars = CalculationOfTheNumberOfCars(boxes);
+        aCalculationOfTheNumberOfCars = calculationOfTheNumberOfCars(boxes);
         for (int i = 1; i <= aCalculationOfTheNumberOfCars; i++) {
             System.out.println("Грузовик: " + i);
             for (int d = 1; d <= MAX_CONTAINERS_IN_CAR; d++) {
@@ -49,9 +49,13 @@ public class TrucksAndContainers {
                     System.out.println("\t\tЯщик: " + boxx);
                     boxx++;
                     boxes--;
-                    if (boxes == 0) break;
+                    if (boxes == 0) {
+                        break;
+                    }
                 }
-                if (boxes == 0) break;
+                if (boxes == 0){
+                    break;
+                }
             }
         }
     }
@@ -67,6 +71,6 @@ public class TrucksAndContainers {
         TrucksAndContainers flight = new TrucksAndContainers(boxes);
         flight.logisticsCalculation(boxes);
         System.out.println("Необходимо:" + "\n" + "грузовиков - " + flight.aCalculationOfTheNumberOfCars +
-                " шт." + "\n" + "контейнеров - " + flight.CalculationContainers(boxes) + " шт.");
+                " шт." + "\n" + "контейнеров - " + flight.calculationContainers(boxes) + " шт.");
     }
 }

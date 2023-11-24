@@ -15,19 +15,19 @@ public class Birthdays {
 
     }
     public static String collectBirthdays(int year, int month, int day) {
-        LocalDate Birthday = LocalDate.of(year, month, day);
+        LocalDate birthday = LocalDate.of(year, month, day);
         LocalDate dateNowe = LocalDate.now();
         String data = "";
         int count = 0;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy - eee").
                 localizedBy(new Locale("us"));
         while (true) {
-            if (Birthday.isAfter(dateNowe)) {
+            if (birthday.isAfter(dateNowe)) {
                 break;
             }
-            data = data + count + " - " + formatter.format(Birthday) + System.lineSeparator();
+            data = data + count + " - " + formatter.format(birthday) + System.lineSeparator();
             count++;
-            Birthday = Birthday.plusYears(1);
+            birthday = birthday.plusYears(1);
 
         }
         return data;
